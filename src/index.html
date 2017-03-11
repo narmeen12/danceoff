@@ -3,12 +3,11 @@
   <title>Dance Off</title>
   <link href="/style.css" rel="stylesheet" type="text/css">
 
-  <script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 <body>
-  
+
     <center>
       <img src="danceoff_1.png" width="500" height="300">
   </center>
@@ -18,25 +17,30 @@
   </center>
 
   <div id="videos">
-    <div id="publisher"></div>
-    <div class="buttons">
-      <img width="50" height="50" id="poop" src="/images/poop.png" />
-      <img width="50" height="50" id="pound" src="/images/like.png" />
-      <p id="counter">0</p>
+    <div>
+      <div id="publisher"></div>
+      <div class="buttons">
+        <img id="poop" src="/images/poop.png" />
+        <img id="pound" src="/images/like.png" />
+        <p id="counter">0</p>
+      </div>
     </div>
-    <div id="publisher2"></div>
-    <div class="buttons">
-      <img width="50" height="50" id="poop2" src="/images/poop.png">
-      <img width="50" height="50" id="pound2" src="/images/like.png">
-      <p id="counter2">0</p>
+    <div>
+      <div id="publisher2"></div>
+      <div class="buttons">
+        <img id="poop2" src="/images/poop.png">
+        <img id="pound2" src="/images/like.png">
+        <p id="counter2">0</p>
+      </div>
     </div>
-  </div>
   <br>
-   <center> <div id="player"></div>
+   <center>
+     <div id="player"></div>
    </center>
+
   <script src="videoPlaySync.js"> </script>
   <script src="/client/chat.js"> </script>
   <script src="/client/button.js"> </script>
-
+  <script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
 </body>
 </html>
