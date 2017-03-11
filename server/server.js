@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 const app = express();
 
+var count = 0;
+
 app.use(bodyParser.urlencoded({
   extended: true,
 }));

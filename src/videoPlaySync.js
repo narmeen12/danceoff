@@ -1,5 +1,5 @@
 var songIds = ["c6YtKdE5F1I", "dZJ9tx_zk4A", "HdzI-191xhU", "sFTCEBhEggs", "OKGasVAmOJs", "Cufz92eiUPQ"];
-var widget = document.getElementById('widgetDiv');
+var count = 0;
 
 
  var tag = document.createElement('script');
@@ -13,27 +13,70 @@ var widget = document.getElementById('widgetDiv');
 
     var currentSong = songIds[Math.floor(Math.random() * 6).toString()];
 
-    console.log("THIS CURRENT SONG",currentSong)
+    console.log("THIS CURRENT SONG ID:",currentSong)
 
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '80',
+          height: '100',
           width: '500',
           videoId: currentSong,
           playerVars: { 'start': 40, 'end': 80},
           events: {
-            'onReady': onPlayerReady
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
           }
         });
       }
 
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
+function readyDancer() {
+	count++;
+}
 
-      var done = false;
 
-      function stopVideo() {
-        player.stopVideo();
+function onPlayerReady(event) {
+
+	console.log("THIS IS COUNT",count);
+	var check = setInterval(function(){ 
+	if(count === 2) {
+	  event.target.playVideo();
+	  clearInterval(check);
+	  } else {
+	  	console.log("Waiting for other dancer");
+	  }
+	}, 2000);
+  check();
+}
+
+var done = false;
+
+function onPlayerStateChange() {
+	if (event.data === 0) {          
+          $('#player').fadeOut();
       }
+  }
+
+
+// session.signal(
+//   {
+//     data:"Dancers are ready!",
+//     type:"ready"
+//   },
+//   function(error) {
+//     if (error) {
+//       console.log("signal error ("
+//                    + error.name
+//                    + "): " + error.message);
+//     } else {
+//       console.log("Dancers ready!");
+//     }
+//   }
+// );
+
+// session.on("signal:ready", function(event) {
+// 	console.log("THIS EVENT",event)
+// 	event.data
+
+//  console.log("Signal sent from connection " + event.from.id);
+//  // Process the event.data property, if there is any data.
+// });
