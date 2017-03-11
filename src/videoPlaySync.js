@@ -29,10 +29,6 @@ var count = 0;
         });
       }
 
-function readyDancer() {
-	count++;
-}
-
 function onPlayerReady(event) {
 
 	var check = setInterval(function(){ 
@@ -94,10 +90,6 @@ session.signal(
   }
 );
 
-session.on("signal:ready", function(event) {
-	console.log("THIS EVENT",event)
-	event.data
-
- console.log("Signal sent from connection " + event.from.id);
- // Process the event.data property, if there is any data.
+session.on('connectionCreated', function(event) {
+   count++
 });
