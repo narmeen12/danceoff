@@ -5,9 +5,10 @@ var token = 'T1==cGFydG5lcl9pZD00NTc5MzI3MiZzaWc9OTQyYmM0ZTI4ZmQyZjAyNzZiM2E2OTc
 function initializeSession() {
   var session = OT.initSession(apiKey, sessionId);
 
-  // session.on('streamCreated', function(event) {
-  //   session.subscribe(event.stream, 'subscriber');
-  // });
+  session.on('streamCreated', function(event) {
+    session.subscribe(event.stream);
+
+  });
 
   session.on('sessionDisconnected', function(event) {
     console.log('You were disconnected from the session.', event.reason);
@@ -20,18 +21,13 @@ function initializeSession() {
         width: '100%',
         height: '100%'
       });
-      var publisher2 = OT.initPublisher('publisher2', {
-        insertMode: 'append',
-        width: '100%',
-        height: '100%'
-      })
+
       session.publish(publisher);
-      session.publish(publisher2);
     } else {
       console.log('There was an error connecting to the session: ', error.code, error.message);
     }
   });
-}
+ }
 
 window.onload = function() {
 	initializeSession();
