@@ -1,0 +1,26 @@
+{
+  "name": "danceoff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sho13/danceoff.git"
+  },
+  "author": "Sean Ho <sean.ho.0103@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sho13/danceoff/issues"
+  },
+  "homepage": "https://github.com/sho13/danceoff#readme",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "nodemon": "1.11.0",
+    "path": "0.12.7"
+  }
+}
