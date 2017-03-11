@@ -1,3 +1,7 @@
+body {
+  background: url('https://ga-dash.s3.amazonaws.com/production/assets/anna-bg.png') no-repeat center center fixed;
+}
+
 #videos {
     position: relative;
     width: 100%;

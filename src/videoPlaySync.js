@@ -33,22 +33,44 @@ function readyDancer() {
 	count++;
 }
 
-
 function onPlayerReady(event) {
 
-	console.log("THIS IS COUNT",count);
 	var check = setInterval(function(){ 
 	if(count === 2) {
+	  displayCountDown();
 	  event.target.playVideo();
 	  clearInterval(check);
+	  
 	  } else {
 	  	console.log("Waiting for other dancer");
 	  }
-	}, 2000);
+	}, 5000);
   check();
+
 }
 
-var done = false;
+function displayCountDown() {
+
+	var index = 0;
+
+	var countdown = setInterval(function(){
+
+	 if(index > 4) {
+
+	 	clearInterval(countdown);
+
+	 } else {
+
+		document.createElement('img');
+		countdown.src = "../assets/"+index+".png"
+
+		countdown.innerHtml(numbers);
+
+		index++
+	 }
+
+  },1000)
+}
 
 function onPlayerStateChange() {
 	if (event.data === 0) {          
@@ -56,27 +78,26 @@ function onPlayerStateChange() {
       }
   }
 
+session.signal(
+  {
+    data:"Dancers are ready!",
+    type:"ready"
+  },
+  function(error) {
+    if (error) {
+      console.log("signal error ("
+                   + error.name
+                   + "): " + error.message);
+    } else {
+      console.log("Dancers ready!");
+    }
+  }
+);
 
-// session.signal(
-//   {
-//     data:"Dancers are ready!",
-//     type:"ready"
-//   },
-//   function(error) {
-//     if (error) {
-//       console.log("signal error ("
-//                    + error.name
-//                    + "): " + error.message);
-//     } else {
-//       console.log("Dancers ready!");
-//     }
-//   }
-// );
+session.on("signal:ready", function(event) {
+	console.log("THIS EVENT",event)
+	event.data
 
-// session.on("signal:ready", function(event) {
-// 	console.log("THIS EVENT",event)
-// 	event.data
-
-//  console.log("Signal sent from connection " + event.from.id);
-//  // Process the event.data property, if there is any data.
-// });
+ console.log("Signal sent from connection " + event.from.id);
+ // Process the event.data property, if there is any data.
+});
