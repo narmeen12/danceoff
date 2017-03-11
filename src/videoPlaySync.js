@@ -19,7 +19,7 @@ var widget = document.getElementById('widgetDiv');
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '0',
+          height: '100',
           width: '500',
           videoId: currentSong,
           start:40,
