@@ -2,7 +2,6 @@ var songIds = ["c6YtKdE5F1I", "dZJ9tx_zk4A", "HdzI-191xhU", "sFTCEBhEggs", "OKGa
 var widget = document.getElementById('widgetDiv');
 
 
-
  var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";
@@ -19,13 +18,12 @@ var widget = document.getElementById('widgetDiv');
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '0',
+          height: '80',
           width: '500',
           videoId: currentSong,
-          start:40,
+          playerVars: { 'start': 40, 'end': 80},
           events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onReady': onPlayerReady
           }
         });
       }
@@ -35,12 +33,7 @@ var widget = document.getElementById('widgetDiv');
       }
 
       var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 30000);
-          done = true;
-        }
-      }
+
       function stopVideo() {
         player.stopVideo();
       }
