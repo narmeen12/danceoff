@@ -6,6 +6,8 @@ var xhr = new XMLHttpRequest();
 
 var count = 0;
 
+var counting2 = 0;
+
 like.addEventListener("click", function(e) {
   addUp()
 
@@ -64,7 +66,7 @@ function minusDown() {
 function addUp2() {
     var counter = document.getElementById("counter2");
     if (counter) {
-      counter.innerHTML = ++count;
+      counter.innerHTML = ++counting2;
       xhr.open('POST',"/add2", true);
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.onreadystatechange = function () {
@@ -84,7 +86,7 @@ function addUp2() {
 function minusDown2() {
     var counter = document.getElementById("counter2");
     if (counter) {
-      counter.innerHTML = --count;
+      counter.innerHTML = --counting2;
       xhr.open('POST',"/add2", true);
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.onreadystatechange = function () {

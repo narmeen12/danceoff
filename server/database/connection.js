@@ -4,7 +4,7 @@ var mysql      = require('mysql');
    user     : 'narmin',
    password : 'narmin123',
    database : 'events_manager',
-   port: 8080
+   port: 3306
  });
  
  config.connect();

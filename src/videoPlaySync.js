@@ -11,7 +11,7 @@ var count = 0;
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
 
-    var currentSong = songIds[Math.floor(Math.random() * 6).toString()];
+    var currentSong = "HdzI-191xhU";
 
     console.log("THIS CURRENT SONG ID:",currentSong)
 
@@ -29,11 +29,16 @@ var count = 0;
         });
       }
 
+function readyDancer() {
+  count++;
+}
+
+
 function onPlayerReady(event) {
 
 	var check = setInterval(function(){ 
 	if(count === 2) {
-	  displayCountDown();
+	  // displayCountDown();
 	  event.target.playVideo();
 	  clearInterval(check);
 	  
@@ -44,6 +49,7 @@ function onPlayerReady(event) {
   check();
 
 }
+
 
 function displayCountDown() {
 
@@ -74,21 +80,6 @@ function onPlayerStateChange() {
       }
   }
 
-session.signal(
-  {
-    data:"Dancers are ready!",
-    type:"ready"
-  },
-  function(error) {
-    if (error) {
-      console.log("signal error ("
-                   + error.name
-                   + "): " + error.message);
-    } else {
-      console.log("Dancers ready!");
-    }
-  }
-);
 
 session.on('connectionCreated', function(event) {
    count++
